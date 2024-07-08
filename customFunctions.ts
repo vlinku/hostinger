@@ -4,10 +4,6 @@ function generateRandomEmail() {
     return `${randomString}@${emailDomain}`;
   }
 
-  function accountPassword () {
-    'Candidate22!'
-  }
-
 
 module.exports = {
     generateRandomEmail,

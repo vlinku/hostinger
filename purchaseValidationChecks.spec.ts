@@ -2,12 +2,12 @@ import { test, expect } from '@playwright/test';
 
 const customFunctions = require("../tests/customFunctions.ts");
 
-
-
 test.describe.serial('Purchase plan validations check', () => {
   test.slow();
 
-  test('24 months Business plan', async ({ page }) => {
+  test('24 months Business plan credit card validations', async ({ page }) => {
+    
+    //variables used in the testing
     const cookieAcceptButton = page.getByRole('button', {name:'Accept'});
     const buttonClaimDeal = page.getByRole('button', { name: 'Claim Deal' });
     const buttonChoosePlan = page.getByRole('button', {name: "Choose plan"});
@@ -15,28 +15,24 @@ test.describe.serial('Purchase plan validations check', () => {
     const submitSecurePaymentButton = page.getByRole('button',{name:"Submit Secure Payment"})
     const emailErrorMessage = page.locator('.h-input__error').first()
     const passwordErrorMessage = page.locator('.h-input__error').nth(1)
-
     const emailAddressField = page.locator('.h-input__input').nth(0);
     const emaillAddressInput = customFunctions.generateRandomEmail(page);
-
     const passwordField = page.locator('.h-input__input').nth(1);
     const passwordInput = 'Candidate22!';
-   
-
     const cardHolderNameErrorMessage = page.locator('[class="error-message invalid"]').nth(0);
     const cardNumberErrorMessage = page.locator('[class="error-message invalid"]').nth(1);
     const cardDateErrorMessage = page.locator('[class="error-message invalid"]').nth(2);
     const cardCVCErrorMessage = page.locator('[class="error-message invalid"]').nth(3);
     
     
-    
+    //Confirmation that the user is on the correct site and product selection
     await page.goto('https://www.hostinger.com/');
     await expect(page).toHaveTitle(/Hostinger/);
     await expect(buttonClaimDeal).toHaveText("Claim Deal");
     await buttonClaimDeal.click();
     await buttonChoosePlan.nth(1).click()
     
-        //Second page validation and Cookie policy acceptance
+        //Second page validation and cookie policy
     await expect(page).toHaveTitle(/.*Cart*/)
     await expect(cookieAcceptButton).toHaveText("Accept");
     await cookieAcceptButton.click();
