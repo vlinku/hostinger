@@ -7,7 +7,7 @@ const customFunctions = require("../tests/customFunctions.ts");
 test.describe.serial('Purchase plan validations check', () => {
   test.slow();
 
-  test('24 months Business plan', async ({ page }) => {
+  test('24 months Business plan validations', async ({ page }) => {
     const cookieAcceptButton = page.getByRole('button', {name:'Accept'});
     const buttonClaimDeal = page.getByRole('button', { name: 'Claim Deal' });
     const buttonChoosePlan = page.getByRole('button', {name: "Choose plan"});
