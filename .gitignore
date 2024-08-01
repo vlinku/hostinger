@@ -6,5 +6,5 @@ blob-report
 tests-examples
 package-lock.json
 package.json
-/.github/workflows/
+.github/
 .gitignore
