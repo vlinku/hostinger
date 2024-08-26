@@ -10,7 +10,7 @@ export default defineConfig({
  
   forbidOnly: !!process.env.CI,
   
-  retries: 2,
+  retries: 0,
   
   workers: process.env.CI ? 1 : undefined,
 
